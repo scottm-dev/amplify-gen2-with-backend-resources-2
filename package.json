@@ -15,8 +15,8 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@aws-amplify/backend": "^0.12.1",
-    "@aws-amplify/backend-cli": "^0.11.1",
+    "@aws-amplify/backend": "0.0.0-test-20240327212405",
+    "@aws-amplify/backend-cli": "0.0.0-test-20240327212405",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
