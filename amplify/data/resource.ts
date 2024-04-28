@@ -39,7 +39,7 @@ const schema = a.schema({
       }),
       enum: a.enum(['some', 'enum', 'value']),
     })
-    .authorization((allow) => [allow.publicApiKey()]),
+    .authorization((allow) => [allow.owner(), allow.guest().to(['read'])]),
 });
 
 // Used for code completion / highlighting when making requests from frontend
