@@ -2,6 +2,8 @@
 
 import { a, defineData, type ClientSchema } from '@aws-amplify/backend';
 
+export const TTL_ATTRIBUTE_NAME = 'ttl';
+
 const schema = a.schema({
   Todo: a
     .model({
@@ -44,6 +46,7 @@ const schema = a.schema({
         ipAddress: a.ipAddress(),
       }),
       enum: a.enum(['some', 'enum', 'value']),
+      [TTL_ATTRIBUTE_NAME]: a.timestamp(),
     })
     .authorization((allow) => [
       allow.publicApiKey(),

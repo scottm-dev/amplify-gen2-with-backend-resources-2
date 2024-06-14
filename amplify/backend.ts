@@ -2,7 +2,7 @@ import { defineBackend } from '@aws-amplify/backend';
 import { auth } from './auth/resource';
 import { myDemoFunction } from './functions/my-demo-function/resource'
 import { storage } from './storage/resource.js';
-import { data } from './data/resource.js';
+import { TTL_ATTRIBUTE_NAME, data } from './data/resource.js';
 
 
 const backend = defineBackend({
@@ -27,3 +27,10 @@ backend.storage.resources.bucket.grantReadWrite(authRole);
 const unauthRole = backend.auth.resources.unauthenticatedUserIamRole;
 backend.storage.resources.bucket.grantRead(unauthRole);
 //bucket.grantRead(unauthRole);
+
+// enable TTL on data table
+const dataResources = backend.data.resources;
+dataResources.cfnResources.amplifyDynamoDbTables['AllTypes'].timeToLiveAttribute = {
+  enabled: true,
+  attributeName: TTL_ATTRIBUTE_NAME,
+};
